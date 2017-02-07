@@ -100,6 +100,7 @@ void PointCloud::cubed_ball(const char* filename)
     
     /* Read refinement regions. */
     r.read_cubed(filename);
+    //r.print_cubed();
     
     /* March through refinement regions and make list. */
     for (int idx=0; idx<r.n; idx++)

@@ -191,6 +191,7 @@ void Refinement_Regions::read_cubed(const char* refinement_list)
 
     /* Read to get number of subregions. ------------------------------------------*/
     
+    //printf("LIST: %s\n",refinement_list);
     fid_list=fopen(refinement_list,"r");
     
     if (fid_list)
@@ -199,6 +200,7 @@ void Refinement_Regions::read_cubed(const char* refinement_list)
         
         fgets(str,1000,fid_list);
         fscanf(fid_list,"%d",&number_of_regions);
+        //printf("%d\n",number_of_regions);
         fgets(str,1000,fid_list);
         
         /* March through refinement regions to read number of subregions. */
@@ -206,6 +208,7 @@ void Refinement_Regions::read_cubed(const char* refinement_list)
         {
             fgets(filename,1000,fid_list);
             remove_newline(filename);
+            //printf("%s\n",filename);
             
             /* Open and read refinement region file. */
             fid_refine=fopen(filename,"r");
@@ -218,14 +221,14 @@ void Refinement_Regions::read_cubed(const char* refinement_list)
             }
             else
             {
-                printf("Could not open file %s.\n",str);
+                printf("Could not open refinement region file %s.\n",str);
             }
         }
         fclose(fid_list);
     }
     else
     {
-        printf("file could not be opened.\n");
+        printf("Refinement list %s could not be opened.\n",refinement_list);
     }
     
     /* Allocate memory. -----------------------------------------------------------*/
