@@ -81,7 +81,7 @@ void PointCloud::cubed_sphere(const char* filename, double R)
     pl.list2array(p);
 
     /* Sort to later avoid duplications. */
-    quicksort(p,0,pl.n-1);
+    if (pl.n>1)quicksort(p,0,pl.n-1);
     
     /* Project onto sphere. */
     project2sphere(p,pl.n,R);
@@ -125,7 +125,7 @@ void PointCloud::cubed_ball(const char* filename)
     pl.list2array(p);
     
     /* Sort to later avoid duplications. */
-    quicksort(p,0,pl.n-1);
+    if (pl.n>1) quicksort(p,0,pl.n-1);
     
 }
 
@@ -349,7 +349,7 @@ void PointCloud::fibonacci_ball(const char* filename)
     pl.list2array(p);
     
     /* Sort to later avoid duplications. */
-    quicksort(p,0,pl.n-1);
+    if (pl.n>1) quicksort(p,0,pl.n-1);
 }
 
 /* Regular spherical grid. --------------------------------------------------------*/
@@ -406,5 +406,5 @@ void PointCloud::regular(const char* filename)
     pl.list2array(p);
     
     /* Sort to later avoid duplications. */
-    quicksort(p,0,pl.n-1);
+    if (pl.n>1) quicksort(p,0,pl.n-1);
 }

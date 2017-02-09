@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     }
     
     /* Cubed ball. ---------------------------------------------------------*/
-    if (!strcmp(argv[1],"cubed_ball"))
+    else if (!strcmp(argv[1],"cubed_ball"))
     {
         printf("cubed ball\n");
         printf("name of refinement list: %s\n",argv[2]);
