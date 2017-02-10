@@ -26,7 +26,8 @@ class PointCloud
          has been sorted before.
          */
         void write(
-                    const char* filename    /**< Pointer to filename. */
+                    const char* filename,    /**< Pointer to filename. */
+                    double d_min             /**< Minimum allowable distance to the nearest grid point. */
                     ) const;
     
         /** 

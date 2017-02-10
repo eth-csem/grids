@@ -30,22 +30,70 @@ PointCloud::~PointCloud()
 
 /* Write points to a file. --------------------------------------------------------*/
 
-void PointCloud::write(const char* filename) const
+void PointCloud::write(const char* filename, double d_min) const
 {
+    /* Local variables. */
     FILE* pfile;
+    int j, k, i=0;
+    int n_accepted=0, n_rejected=0;
+    bool* is_far_enough;
+    
+    /* Initialise the vector indicating if the point is far enough from the others. */
+    is_far_enough=new bool[n_points];
+    for (int k=0; k<n_points; k++) is_far_enough[k]=true;
     
     pfile=fopen(filename,"w");
     
-    if (p!=0)
+    /* Write grid points without eliminating points that are too close. */
+    if (p && pfile && d_min==0.0)
     {
-        fprintf(pfile, "%lg %lg %lg\n",p[0].x,p[0].y,p[0].z);
-        for (int i=1; i<n_points; i++)
+        for (int i=0; i<n_points; i++)
         {
-            if (p[i]!=p[i-1]) fprintf(pfile, "%lg %lg %lg\n",p[i].x,p[i].y,p[i].z);
+            fprintf(pfile, "%lg %lg %lg\n",p[i].x,p[i].y,p[i].z);
+        }
+        n_accepted=n_points;
+    }
+    
+    /* Write grid points, except those that are too close to each other. */
+    else if (p && pfile && d_min>0.0)
+    {
+        /* Sort with increasing x coordinate. */
+        if (n_points>1) quicksort(p,0,n_points-1);
+
+        /* Walk through the grid points. */
+        while (i<n_points)
+        {
+            /* Print the current grid point. */
+            fprintf(pfile, "%lg %lg %lg\n",p[i].x,p[i].y,p[i].z);
+            n_accepted++;
+            
+            /* Walk from the current grid point until the x coordinate is too far away. */
+            for (k=i+1; fabs(p[k].x-p[i].x)<d_min && k<n_points; k++)
+            {
+                /* Check if the candidate grid points are far enough from the current grid point. */
+                if ((fabs(p[k].y-p[i].y)<d_min && fabs(p[k].z-p[i].z)<d_min) && is_far_enough[k]==true)
+                {
+                    is_far_enough[k]=false;
+                    n_rejected++;
+                }
+            }
+            /* Set the first accepted grid point, counted from the current one, as the new current one. */
+            for (j=i+1; j<=k; j++)
+            {
+                if (is_far_enough[j]==true) break;
+            }
+            i=j;
         }
     }
+    
+    /* Output about accepted and rejected points. */
+    printf("total number of grid points: %d\n",n_points);
+    printf("number of grid points written: %d\n",n_accepted);
+    printf("number of grid points rejected: %d\n",n_rejected);
 
-    fclose(pfile);
+    /* Clean up. */
+    delete[] is_far_enough;
+    if (pfile) fclose(pfile);
 }
 
 /* Cubed sphere. ------------------------------------------------------------------*/
@@ -80,12 +128,8 @@ void PointCloud::cubed_sphere(const char* filename, double R)
     n_points=pl.n;
     pl.list2array(p);
 
-    /* Sort to later avoid duplications. */
-    if (pl.n>1)quicksort(p,0,pl.n-1);
-    
     /* Project onto sphere. */
     project2sphere(p,pl.n,R);
-    
 }
 
 /* Cubed ball. --------------------------------------------------------------------*/
@@ -108,6 +152,7 @@ void PointCloud::cubed_ball(const char* filename)
         /* Loop over normalised radii in the refinement region. */
         for (double R=r.rmin[idx]; R<=r.rmax[idx]; R+=r.d_vertical[idx])
         {
+            printf("%d %lg\n",idx, R);
             /* Loops over the 3 Cartesian coordinates. */
             for (double x=r.xmin[idx]; x<=r.xmax[idx]; x+=r.d_horizontal[idx])
             {
@@ -123,10 +168,6 @@ void PointCloud::cubed_ball(const char* filename)
     p=new Point[pl.n];
     n_points=pl.n;
     pl.list2array(p);
-    
-    /* Sort to later avoid duplications. */
-    if (pl.n>1) quicksort(p,0,pl.n-1);
-    
 }
 
 
@@ -347,9 +388,6 @@ void PointCloud::fibonacci_ball(const char* filename)
     p=new Point[pl.n];
     n_points=pl.n;
     pl.list2array(p);
-    
-    /* Sort to later avoid duplications. */
-    if (pl.n>1) quicksort(p,0,pl.n-1);
 }
 
 /* Regular spherical grid. --------------------------------------------------------*/
@@ -404,7 +442,4 @@ void PointCloud::regular(const char* filename)
     p=new Point[pl.n];
     n_points=pl.n;
     pl.list2array(p);
-    
-    /* Sort to later avoid duplications. */
-    if (pl.n>1) quicksort(p,0,pl.n-1);
 }
