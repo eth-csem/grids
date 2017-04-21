@@ -632,12 +632,12 @@ void Refinement_Regions::print_fibonacci()
     for (int i=0; i<n; i++)
     {
         printf("n_points=%d\n",n_points[i]);
-        printf("xmin=%lg, xmax=%lg\n",xmin[i],xmax[i]);
-        printf("ymin=%lg, ymax=%lg\n",ymin[i],ymax[i]);
-        printf("rmin=%lg, rmax=%lg\n",rmin[i],rmax[i]);
-        printf("d_vertical=%lg\n",d_vertical[i]);
+        printf("xmin=%lg deg, xmax=%lg deg\n",xmin[i],xmax[i]);
+        printf("ymin=%lg deg, ymax=%lg deg\n",ymin[i],ymax[i]);
+        printf("rmin=%lg deg, rmax=%lg deg\n",rmin[i],rmax[i]);
+        printf("d_vertical=%lg km\n",d_vertical[i]);
         printf("b=(%lg %lg %lg)\n",b[0][i],b[1][i],b[2][i]);
-        printf("%lg\n",phi[i]);
+        printf("phi=%lg deg\n",phi[i]);
         printf("--------------------------------------\n");
     }
 }

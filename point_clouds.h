@@ -66,6 +66,18 @@ class PointCloud
         void regular(
                         const char* filename    /**< Name of the file containing the list of refinement regions. */
                             );
+    
+        /** 
+         * Compute a point cloud for a vertical profile.
+         */
+        void profile(
+                        double lat,             /**< Latitude [deg]. */
+                        double lon,             /**< Longitude [deg]. */
+                        double r_min,           /**< Minimum radius [km]. */
+                        double r_max,           /**< Maximum radius [km]. */
+                        double dr              /**< Radius increment [km]. */
+                     );
+    
 };
 
 #endif /* point_clouds_h */

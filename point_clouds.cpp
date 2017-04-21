@@ -194,7 +194,6 @@ void PointCloud::fibonacci_sphere(const char* filename, double radius)
         /* Check if this refinement region overlaps with the radius of the sphere. */
         if (radius>=ref.rmin[idx] && radius<=ref.rmax[idx])
         {
-        
             /* Setup for the Fibonacci sphere. */
             phi_min=ref.ymin[idx]*PI/180.0;
             phi_max=ref.ymax[idx]*PI/180.0;
@@ -206,12 +205,12 @@ void PointCloud::fibonacci_sphere(const char* filename, double radius)
             part_of_circle=(phi_max-phi_min)/(2.0*PI);
             golden_angle=PI*(3.0-sqrt(5.0))*part_of_circle;
             offset=z_len/ref.n_points[idx];
-        
+            
             /* Compute rotation matrix. */
             if (ref.phi[idx]!=0.0)
             {
                 n[0]=ref.b[0][idx]; n[1]=ref.b[1][idx]; n[2]=ref.b[2][idx];
-                rotation_matrix(R,n,ref.phi[idx]);
+                rotation_matrix(R,n,ref.phi[idx]*PI/180.0);
             }
         
             /* Remove already existing points in the list that fall within this refinement region. */
@@ -219,6 +218,7 @@ void PointCloud::fibonacci_sphere(const char* filename, double radius)
             {
                 /* March through all the points in the list. */
                 /* Consider successor of current point, pt->next, to be removed. */
+                
                 for (Point *pt=pl.start; pt->next; pt=pt->next)
                 {
                     /* Rotate the point in reverse direction using transpose of rotation matrix. */
@@ -242,13 +242,16 @@ void PointCloud::fibonacci_sphere(const char* filename, double radius)
                     if (theta < theta_max && theta > theta_min && phi < phi_max && phi > phi_min)
                     {
                         temp=pt->next;
-                        pt->next=pt->next->next;
-                        delete temp;
-                        pl.n--;
+                        if (pt->next->next) // Avoid removing last point in the list, which would cause problem in the loop statement.
+                        {
+                            pt->next=pt->next->next;
+                            delete temp;
+                            pl.n--;
+                        }
                     }
                 }
             } /* END: Remove already existing points in the list that fall within this refinement region. */
-        
+            
             /* Compute Cartesian coordinates for all the points on the sphere segment. */
             for (int i=0; i<ref.n_points[idx]; i++)
             {
@@ -268,7 +271,7 @@ void PointCloud::fibonacci_sphere(const char* filename, double radius)
                     z_temp=R[2][0]*x+R[2][1]*y+R[2][2]*z;
                     x=x_temp; y=y_temp; z=z_temp;
                 }
-            
+                
                 /* Append to the list of points. */
                 pl.append(x,y,z);
             }
@@ -317,7 +320,7 @@ void PointCloud::fibonacci_ball(const char* filename)
         if (ref.phi[idx]!=0.0)
         {
             n[0]=ref.b[0][idx]; n[1]=ref.b[1][idx]; n[2]=ref.b[2][idx];
-            rotation_matrix(R,n,ref.phi[idx]);
+            rotation_matrix(R,n,ref.phi[idx]*PI/180.0);
         }
         
         /* Remove already existing points in the list that fall within this refinement region. */
@@ -348,9 +351,12 @@ void PointCloud::fibonacci_ball(const char* filename)
                 if (theta <= theta_max && theta >= theta_min && phi <= phi_max && phi >= phi_min && r <= ref.rmax[idx] && r >= ref.rmin[idx])
                 {
                     temp=pt->next;
-                    pt->next=pt->next->next;
-                    delete temp;
-                    pl.n--;
+                    if (pt->next->next) // Avoid removing last point in the list.
+                    {
+                        pt->next=pt->next->next;
+                        delete temp;
+                        pl.n--;
+                    }
                 }
             }
         } /* END: Remove already existing points in the list that fall within this refinement region. */
@@ -438,7 +444,32 @@ void PointCloud::regular(const char* filename)
                 }}}}
     
     /* Write list into an array. */
+    p=new Point[pl.n];
+    n_points=pl.n;
+    pl.list2array(p);
+}
 
+/* Vertical profile. --------------------------------------------------------------*/
+
+void PointCloud::profile(double lat, double lon, double r_min, double r_max, double dr)
+{
+    /* Local variable. */
+    Pointlist pl;
+    double x, y, z;
+    
+    double theta=(90.0-lat)*PI/180.0;
+    double phi=lon*PI/180;
+    
+    /* Make grid points on the profile. */
+    for (double r=r_min; r<=r_max; r+=dr)
+    {
+        x=r*cos(phi)*sin(theta);
+        y=r*sin(phi)*sin(theta);
+        z=r*cos(theta);
+        pl.append(x,y,z);
+    }
+    
+    /* Write list into an array. */
     p=new Point[pl.n];
     n_points=pl.n;
     pl.list2array(p);
