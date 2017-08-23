@@ -1,0 +1,13 @@
+#- Number of subregions followed by spatial extent. -----
+1
+#- South Atlantic complete, 0 - 1400 km depth, 1.0 deg spacing.
+-80.0		#- lon_min [degree]
+60.0		#- lon_max [degree]
+50.0		#- colat_min [degree]
+130.0		#- colat_max [degree]
+80000.0		#- number of points per depth level
+4971.0		#- r_min [km]
+6371.0		#- r_max [km]
+10.0		#- d_r [km]
+0.5 0.866026 0.0	#- normalised rotation vector
+30.0		#- rotation angle [degree]

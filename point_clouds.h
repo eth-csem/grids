@@ -5,7 +5,7 @@
 #include "auxiliary.h"
 
 /*! \file
- \brief Definition of the point cloud classes.
+ \brief The source file point_clouds.h defines the PointCloud class. A member of this class is an array of 3D points in space that can be filled by the member functions of the class, which generate a specific type of point cloud. The point cloud can be written to a simple output text file, and in this process, points that are too close to another one can be removed.
  */
 
 /********************************************************************************//**

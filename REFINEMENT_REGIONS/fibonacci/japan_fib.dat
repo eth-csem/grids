@@ -1,0 +1,24 @@
+#- Number of subregions followed by spatial extent. -----
+2
+#- Japan coarse, 0 - 600 km depth, 0.5 deg spacing.
+115.0		#- lon_min [degree]
+160.0		#- lon_max [degree]
+30.0		#- colat_min [degree]
+75.0		#- colat_max [degree]
+30000.0		#- number of points per depth level
+5771.0		#- r_min [km]
+6371.0		#- r_max [km]
+10.0		#- d_r [km]
+0.0 0.0 0.0	#- normalised rotation vector
+0.0			#- rotation angle [degree]
+#- Japan refined, 0 - 100 km depth, 0.5 deg spacing.
+125.0		#- lon_min [degree]
+150.0		#- lon_max [degree]
+45.0		#- colat_min [degree]
+68.0		#- colat_max [degree]
+50000.0		#- number of points per depth level
+5271.0		#- r_min [km]
+6371.0		#- r_max [km]
+10.0		#- d_r [km]
+0.0 0.0 0.0	#- normalised rotation vector
+0.0			#- rotation angle [degree]

@@ -4,7 +4,8 @@
 #include "point_clouds.h"
 
 /*! \file
- \brief Main executable.
+ \brief Main executable. Read input, calls functions to generate specific types of
+ point clouds, and write the point clouds into a file..
  */
 
 /*==========================================================================*/
@@ -133,7 +134,7 @@ void print_help()
     printf("\nUsage of grid:\n");
     printf("--------------\n");
     printf("grid cubed_sphere [name of refinement list] [output file name] [radius of the sphere in km] [minimum point distance in km]\n");
-    printf("grid cubed_ball [name of refinement list] [output file name] [minimum point distance in km] [output filename]\n");
+    printf("grid cubed_ball [name of refinement list] [output file name] [minimum point distance in km]\n");
     printf("grid fibonacci_sphere [name of refinement list] [output file name] [radius of the sphere in km] [minimum point distance in km]\n");
     printf("grid fibonacci_ball [name of refinement list] [output file name] [minimum point distance in km]\n");
     printf("grid regular [name of refinement list] [output file name] [minimum point distance in km]\n");

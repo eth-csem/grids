@@ -13,6 +13,8 @@ _Grids_ is a tool for the computation of point clouds that can be used to extrac
 
 The usage of _Grids_ for these different types of point clouds is described below.
 
+The point clouds produced by _Grids_ do not contain any connectivity information. If needed, this must be added externally, using, for instance, vtk or other meshers.
+
 
 Compiling and running _Grids_
 =============================
@@ -29,6 +31,60 @@ To get help, run the _grids_ executable with the _help_ flag:
 Brief description of the source code
 ====================================
 
+The _main_ function is contained in grid.cpp. It reads the input, calls functions to generate specific point clouds, and writes them into an output file.
 
+The source files point_clouds.h and point_clouds.cpp define and implement the PointCloud class. A member of this class is an array of 3D points in space that can be filled by the member functions of the class, which generate a specific type of point cloud. The point cloud can be written to a simple output text file, and in this process, points that are too close to another one can be removed.
+
+The point-cloud-generating member functions of point_clouds.h typically work as follows: (1) read information on the refinement regions, (2) loop through the refinement regions, (3) add new points within the refinement regions to a point list, (4) write the point list members to the array of 3D points which is a member of the PointCloud class, (5) project the points onto the sphere, in those cases where they have been generated in a different geometry (e.g. a cube for the cubed sphere).
+
+The source files auxiliary.h and auxiliary.cpp define and implement various helper classes and functions. The most important among these are (1) the Point class, which defines 3D points in space, as well as basic operators for assignement and comparison, (2) the Pointlist class, which defines a list of points, and operations to append list members, print the list, or convert it into an array, (3) the Refinement_Regions class, which has attributes of refinement regions as members, and contains functions for reading refinement regions for different point cloud types, (4) projectors from the cube to the sphere, (5) a function to compute a 3D rotation matrix, and (6) a simple quicksort, needed for the efficient removal of points that are too close to each other.
+
+
+Description of point cloud types
+================================
+
+Cubed sphere (regionally refinable)
+-----------------------------------
+
+The refinable cubed sphere is built by partitioning the unit cube into refined subcubes. To produce a refined cubed sphere, _Grids_ needs to be invoked as follows:
+
+./grids cubed_sphere [name of refinement list] [output file name] [radius of the sphere in km] [minimum point distance in km]
+
+The “name of refinement list” is the name of a file which contains a list of other filenames which describe the various refinement regions. An example, list_cs.dat, is contained in the REFINEMENT_REGIONS directory. Each refinement region, for instance the regional refinement for Japan, REFINEMENT_REGIONS/japan_cs.dat, contains a list of subregions. Each of them is specified by the face of the cube to which it belongs (face=1: normal in positive x direction, face=2: normal in negative x direction, face=3: normal in positive y direction, face=4: normal in negative y direction, face=5: normal in positive z direction, face=6: normal in negative z direction). Subsequently, the size of the subcube, as well as the in-plane (horizontal) and normal-to-plane (vertical) refinements are specified using the unit-cube coordinates.
+
+This is clearly not very convenient. Improvements to this are on the TODO list.
+
+
+Cubed ball (regionally refinable)
+---------------------------------
+
+The usage is virtually the same as for the cubed sphere:
+
+./grids cubed_ball [name of refinement list] [output file name] [minimum point distance in km]
+
+Fibonacci sphere (regionally refinable)
+---------------------------------------
+
+Fibonacci ball (regionally refinable)
+-------------------------------------
+
+Regular spherical grid (spherical subsection, regionally refinable)
+-------------------------------------------------------------------
+
+Profile (at specified latitude and longitude)
+---------------------------------------------
+
+Vertical slice (from and to spcified latitude and longitude)
+------------------------------------------------------------
+
+Planned additions to _Grids_
+============================
+
+_Grids_ is currently a rather simple creature. The following features will be added in the future:
+
+- topography
+- more intuitive implementation of the cubed sphere/ball
+- tagged grids to distinguish different regions in the Earth
+- hdf5 output
 
 */

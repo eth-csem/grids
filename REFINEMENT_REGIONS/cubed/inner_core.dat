@@ -17,7 +17,7 @@
 -1.0	#- zmin
 1.0		#- zmax
 0.0		#- rmin
-0.191		#- rmax
+0.191	#- rmax
 0.2		#- d_horizontal
 0.0470	#- d_vertical
 #- Comment line.

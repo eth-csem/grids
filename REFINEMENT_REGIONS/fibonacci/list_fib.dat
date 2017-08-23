@@ -1,0 +1,9 @@
+#- Number of regions followed by list of files.
+7
+REFINEMENT_REGIONS/globe_fib.dat
+REFINEMENT_REGIONS/south_atlantic_fib.dat
+REFINEMENT_REGIONS/north_america_fib.dat
+REFINEMENT_REGIONS/australia_fib.dat
+REFINEMENT_REGIONS/europe_fib.dat
+REFINEMENT_REGIONS/japan_fib.dat
+REFINEMENT_REGIONS/iberia_fib.dat

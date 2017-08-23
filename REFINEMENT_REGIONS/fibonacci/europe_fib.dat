@@ -1,0 +1,57 @@
+#- Number of subregions followed by spatial extent. -----
+5
+#- Europe complete, 0 - 50 km depth, 0.25 deg spacing.
+-30.0		#- lon_min [degree]
+60.0		#- lon_max [degree]
+50.0		#- colat_min [degree]
+120.0		#- colat_max [degree]
+101000.0	#- number of points per depth level
+6321.0		#- r_min [km]
+6371.0		#- r_max [km]
+5.0			#- d_r [km]
+0.0 1.0 0.0	#- normalised rotation vector
+-57.5		#- rotation angle [degree]
+#- Europe complete, 50 - 200 km depth, 0.25 deg spacing.
+-30.0		#- lon_min [degree]
+60.0		#- lon_max [degree]
+50.0		#- colat_min [degree]
+120.0		#- colat_max [degree]
+101000.0	#- number of points per depth level
+6171.0		#- r_min [km]
+6321.0		#- r_max [km]
+5.0			#- d_r [km]
+0.0 1.0 0.0	#- normalised rotation vector
+-57.5		#- rotation angle [degree]
+#- Europe complete, 200 - 400 km depth, 0.5 deg spacing
+-30.0		#- lon_min [degree]
+60.0		#- lon_max [degree]
+50.0		#- colat_min [degree]
+120.0		#- colat_max [degree]
+60000.0		#- number of points per depth level
+5971.0		#- r_min [km]
+6171.0		#- r_max [km]
+10.0		#- d_r [km]
+0.0 1.0 0.0	#- normalised rotation vector
+-57.5		#- rotation angle [degree]
+#- Anatolia, 0 - 50 km depth, 0.1 deg spacing.
+17.0		#- lon_min [degree]
+32.0		#- lon_max [degree]
+97.0		#- colat_min [degree]
+109.0		#- colat_max [degree]
+25000.0		#- number of points per depth level
+6321.0		#- r_min [km]
+6371.0		#- r_max [km]
+5.0			#- d_r [km]
+0.0 1.0 0.0	#- normalised rotation vector
+-57.5		#- rotation angle [degree]
+#- Iberia, 0 - 200 km depth, 0.15 deg spacing.
+-11.0		#- lon_min [degree]
+6.0			#- lon_max [degree]
+100.0		#- colat_min [degree]
+114.0		#- colat_max [degree]
+20000.0		#- number of points per depth level
+6321.0		#- r_min [km]
+6371.0		#- r_max [km]
+5.0			#- d_r [km]
+0.0 1.0 0.0	#- normalised rotation vector
+-57.5		#- rotation angle [degree]

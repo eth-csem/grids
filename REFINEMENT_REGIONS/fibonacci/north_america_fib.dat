@@ -1,0 +1,24 @@
+#- Number of subregions followed by spatial extent. -----
+2
+#- North America complete, 0 - 100 km depth, approx. 0.3 deg spacing.
+-120.0		#- lon_min [degree]
+0.0			#- lon_max [degree]
+40.0		#- colat_min [degree]
+115.0		#- colat_max [degree]
+100000.0	#- number of points per depth level
+6271.0		#- r_min [km]
+6371.0		#- r_max [km]
+5.0			#- d_r [km]
+0.766044 0.642787 0.0	#- normalised rotation vector
+-30.0		#- rotation angle [degree]
+#- North America complete, 100 - 1400 km depth, 0.5 deg spacing.
+-120.0		#- lon_min [degree]
+0.0			#- lon_max [degree]
+40.0		#- colat_min [degree]
+115.0		#- colat_max [degree]
+50000.0		#- number of points per depth level
+6171.0		#- r_min [km]
+4971.0		#- r_max [km]
+10.0		#- d_r [km]
+0.766044 0.642787 0.0	#- normalised rotation vector
+-30.0		#- rotation angle [degree]

@@ -1,5 +1,0 @@
-# Number of regions, followed by list.
-3
-REFINEMENT_REGIONS/lower_mantle.dat
-REFINEMENT_REGIONS/outer_core.dat
-REFINEMENT_REGIONS/inner_core.dat

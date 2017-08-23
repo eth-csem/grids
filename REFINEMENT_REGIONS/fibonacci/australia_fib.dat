@@ -1,0 +1,13 @@
+#- Number of subregions followed by spatial extent. -----
+1
+#- Australia & SE Asia complete, 0 - 1000 km depth, 1.0 deg spacing.
+105.0		#- lon_min [degree]
+190.0		#- lon_max [degree]
+84.0		#- colat_min [degree]
+140.0		#- colat_max [degree]
+50000.0		#- number of points per depth level
+5371.0		#- r_min [km]
+6371.0		#- r_max [km]
+10.0		#- d_r [km]
+0.0 0.0 0.0	#- normalised rotation vector
+0.0			#- rotation angle [degree]

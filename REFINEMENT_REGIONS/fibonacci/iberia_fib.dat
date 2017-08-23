@@ -1,0 +1,13 @@
+#- Number of subregions followed by spatial extent. -----
+1
+#- Iberian Peninsula, regional refinement, ca. 10 km drid spacing.
+-10.0		#- lon_min [degree]
+2.5			#- lon_max [degree]
+46.0		#- colat_min [degree]
+55.0		#- colat_max [degree]
+35000.0		#- number of points per depth level
+6311.0		#- r_min [km]
+6371.0		#- r_max [km]
+5.0 		#- d_r [km]
+0.0 0.0 0.0	#- normalised rotation vector
+0.0			#- rotation angle [degree]

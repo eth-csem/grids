@@ -1,0 +1,13 @@
+#- Number of subregions followed by spatial extent. -----
+1
+#- Globe to 3480 km radius, 150 km grid spacing.
+0.0			#- lon_min [degree]
+360.0		#- lon_max [degree]
+0.0			#- colat_min [degree]
+180.0		#- colat_max [degree]
+40000.0		#- number of points per depth level
+3480.0		#- r_min [km]
+6371.0		#- r_max [km]
+100.0		#- d_r [km]
+1.0 0.0 0.0	#- normalised rotation vector
+0.0			#- rotation angle [degree]

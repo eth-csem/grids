@@ -3,7 +3,7 @@
 #include "point_clouds.h"
 
 /*! \file
- \brief Definition of the point cloud classes.
+ \brief Implement PointCould class..
  */
 
 const double PI = 3.14159265358979323846264338327;
