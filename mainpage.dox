@@ -1,0 +1,34 @@
+/**
+\mainpage The mainpage documentation.
+
+_Grids_ is a tool for the computation of point clouds that can be used to extract Earth model parameters from the Collaborative Seismic Earth Model (CSEM). Written in C/C++, _Grids_ is currently able to produce the following types of point clouds:
+
+- cubed sphere (regionally refinable)
+- cubed ball (regionally refinable)
+- Fibonacci sphere (regionally refinable)
+- Fibonacci ball (regionally refinable)
+- regular spherical grid (spherical subsection, regionally refinable)
+- profile (at specified latitude and longitude)
+- vertical slice (from and to spcified latitude and longitude)
+
+The usage of _Grids_ for these different types of point clouds is described below.
+
+
+Compiling and running _Grids_
+=============================
+
+To produce an executable from the C/C++ source files, simply invoke a C++ compiler as follows:
+
+g++ auxiliary.cpp point_clouds.cpp grid.cpp -o grids
+
+To get help, run the _grids_ executable with the _help_ flag:
+
+./grids -help
+
+
+Brief description of the source code
+====================================
+
+
+
+*/
