@@ -74,17 +74,31 @@ Fibonacci ball (regionally refinable)
 
 The computation of a refinable Fibonacci ball works similar to the refinable Fibonacci sphere, by invoking _Grids_ as follows:
 
-grid fibonacci_ball [name of refinement list] [output file name] [minimum point distance in km]
+./grids fibonacci_ball [name of refinement list] [output file name] [minimum point distance in km]
 
 
 Regular spherical grid (spherical subsection, regionally refinable)
 -------------------------------------------------------------------
 
+The regular spherical grid is defined in terms of the regular spherical coordinate system, meaning that the point spacing decreases towards the poles and the centre of the Earth. _Grids_ needs to be invoked as follows:
+
+./grids regular [name of refinement list] [output file name] [minimum point distance in km]
+
+Examples for regional refinements are included in REFINEMENT_REGIONS/regular/.
+
+
 Profile (at specified latitude and longitude)
 ---------------------------------------------
 
+A 1D vertical profile can be computed by invoking _Grids_ as follows:
+
+./grids profile [latitude in degree] [longitude in degree] [minimum radius in km] [maximum radius in km] [radius increment in km]
+
+
 Vertical slice (from and to spcified latitude and longitude)
 ------------------------------------------------------------
+
+TO BE WRITTEN.
 
 Planned additions to _Grids_
 ============================
