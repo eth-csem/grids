@@ -136,6 +136,6 @@ void print_help()
     printf("grid cubed_ball [name of refinement list] [output file name] [minimum point distance in km] [output filename]\n");
     printf("grid fibonacci_sphere [name of refinement list] [output file name] [radius of the sphere in km] [minimum point distance in km]\n");
     printf("grid fibonacci_ball [name of refinement list] [output file name] [minimum point distance in km]\n");
-    printf("grid regular [name of refinement list] [output file name] [minimum point distance in km] [output filename]\n");
-    printf("grid profile [latitude in degree] [longitude in degree] [minimum radius in km] [maximum radius in km] [radius increment in km] [output filename]\n");
+    printf("grid regular [name of refinement list] [output file name] [minimum point distance in km]\n");
+    printf("grid profile [latitude in degree] [longitude in degree] [minimum radius in km] [maximum radius in km] [radius increment in km]\n");
 }
