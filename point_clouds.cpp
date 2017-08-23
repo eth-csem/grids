@@ -453,7 +453,7 @@ void PointCloud::regular(const char* filename)
 
 void PointCloud::profile(double lat, double lon, double r_min, double r_max, double dr)
 {
-    /* Local variable. */
+    /* Local variables. */
     Pointlist pl;
     double x, y, z;
     
@@ -467,6 +467,53 @@ void PointCloud::profile(double lat, double lon, double r_min, double r_max, dou
         y=r*sin(phi)*sin(theta);
         z=r*cos(theta);
         pl.append(x,y,z);
+    }
+    
+    /* Write list into an array. */
+    p=new Point[pl.n];
+    n_points=pl.n;
+    pl.list2array(p);
+}
+
+/* Vertical slice. ----------------------------------------------------------------*/
+
+void PointCloud::slice(double lat_min, double lon_min, double r_min, double lat_max, double lon_max, double r_max, double dr, double dgamma)
+{
+    /* Local variables. */
+    Pointlist pl;
+    double x, y, z, phi, theta;
+    
+    double theta_min=(90.0-lat_min)*PI/180.0;
+    double theta_max=(90.0-lat_max)*PI/180.0;
+    double phi_min=lon_min*PI/180.0;
+    double phi_max=lon_max*PI/180.0;
+    
+    double x_min=cos(phi_min)*sin(theta_min);
+    double y_min=sin(phi_min)*sin(theta_min);
+    double z_min=cos(theta_min);
+    
+    double x_max=cos(phi_max)*sin(theta_max);
+    double y_max=sin(phi_max)*sin(theta_max);
+    double z_max=cos(theta_max);
+    
+    double gamma=acos(x_min*x_max+y_min*y_max+z_min*z_max);
+    double dt=dgamma*PI/(180.0*gamma);
+    
+    printf("dt=%lg\n",dt);
+    
+    /* March through the grid points. */
+    for (double r=r_min; r<=r_max; r+=dr)
+    {
+        for (double t=0.0; t<=1.0; t+=dt)
+        {
+            phi=phi_min+t*(phi_max-phi_min);
+            theta=theta_min+t*(theta_max-theta_min);
+            
+            x=r*cos(phi)*sin(theta);
+            y=r*sin(phi)*sin(theta);
+            z=r*cos(theta);
+            pl.append(x,y,z);
+        }
     }
     
     /* Write list into an array. */

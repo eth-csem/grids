@@ -92,6 +92,19 @@ int main(int argc, char *argv[])
         C.profile(atof(argv[2]),atof(argv[3]),atof(argv[4]),atof(argv[5]),atof(argv[6]));
         C.write(argv[7], 0.0);
     }
+    
+    /* Vertical slice. -----------------------------------------------------*/
+    else if (!strcmp(argv[1],"slice"))
+    {
+        printf("\nvertical slice\n");
+        printf("min. latitude=%lg deg, min. longitude=%lg deg, min. radius=%lg km\n",atof(argv[2]),atof(argv[3]),atof(argv[4]));
+        printf("max. latitude=%lg deg, max. longitude=%lg deg, max. radius=%lg km\n",atof(argv[5]),atof(argv[6]),atof(argv[7]));
+        printf("radius increment=%lg km, angular increment=%lg deg\n",atof(argv[8]),atof(argv[9]));
+        
+        C.slice(atof(argv[2]),atof(argv[3]),atof(argv[4]),atof(argv[5]),atof(argv[6]),atof(argv[7]),atof(argv[8]),atof(argv[9]));
+        C.write(argv[10], 0.0);
+    }
+
 
     
     /* Get help. -----------------------------------------------------------*/
@@ -119,10 +132,10 @@ void print_help()
 {
     printf("\nUsage of grid:\n");
     printf("--------------\n");
-    printf("grid cubed_sphere [name of refinement list] [output file name] [radius of the sphere in km] [minimum point distance in km] [output filename]\n");
+    printf("grid cubed_sphere [name of refinement list] [output file name] [radius of the sphere in km] [minimum point distance in km]\n");
     printf("grid cubed_ball [name of refinement list] [output file name] [minimum point distance in km] [output filename]\n");
-    printf("grid fibonacci_sphere [name of refinement list] [output file name] [radius of the sphere in km] [minimum point distance in km] [output filename]\n");
-    printf("grid fibonacci_ball [name of refinement list] [output file name] [minimum point distance in km] [output filename]\n");
+    printf("grid fibonacci_sphere [name of refinement list] [output file name] [radius of the sphere in km] [minimum point distance in km]\n");
+    printf("grid fibonacci_ball [name of refinement list] [output file name] [minimum point distance in km]\n");
     printf("grid regular [name of refinement list] [output file name] [minimum point distance in km] [output filename]\n");
     printf("grid profile [latitude in degree] [longitude in degree] [minimum radius in km] [maximum radius in km] [radius increment in km] [output filename]\n");
 }
