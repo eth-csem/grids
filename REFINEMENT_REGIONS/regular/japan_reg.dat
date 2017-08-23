@@ -1,0 +1,24 @@
+#- Number of subregions followed by spatial extent. -----
+2
+#- Comment line.
+120.0		#- lon_min [degree]
+160.0		#- lon_max [degree]
+30.0		#- colat_min [degree]
+70.0		#- colat_max [degree]
+6171.0		#- z_min [km]
+6371.0		#- z_max [km]
+1.0			#- d_horizontal
+20.0		#- d_vertical [km]
+0.0 0.0 1.0	#- normalised rotation vector
+20.0			#- rotation angle [degree]
+#- Comment line.
+120.0		#- lon_min [degree]
+160.0		#- lon_max [degree]
+30.0		#- colat_min [degree]
+70.0		#- colat_max [degree]
+5871.0		#- z_min [km]
+6171.0		#- z_max [km]
+2.0			#- d_horizontal
+50.0		#- d_vertical [km]
+0.0 0.0 1.0	#- normalised rotation vector
+20.0			#- rotation angle [degree]

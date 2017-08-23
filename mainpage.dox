@@ -50,7 +50,7 @@ The refinable cubed sphere is built by partitioning the unit cube into refined s
 
 ./grids cubed_sphere [name of refinement list] [output file name] [radius of the sphere in km] [minimum point distance in km]
 
-The “name of refinement list” is the name of a file which contains a list of other filenames which describe the various refinement regions. An example, list_cs.dat, is contained in the REFINEMENT_REGIONS directory. Each refinement region, for instance the regional refinement for Japan, REFINEMENT_REGIONS/japan_cs.dat, contains a list of subregions. Each of them is specified by the face of the cube to which it belongs (face=1: normal in positive x direction, face=2: normal in negative x direction, face=3: normal in positive y direction, face=4: normal in negative y direction, face=5: normal in positive z direction, face=6: normal in negative z direction). Subsequently, the size of the subcube, as well as the in-plane (horizontal) and normal-to-plane (vertical) refinements are specified using the unit-cube coordinates.
+The “name of refinement list” is the name of a file which contains a list of other filenames which describe the various refinement regions. An example, list_cs.dat, is contained in the REFINEMENT_REGIONS/cubed/ directory. Each refinement region, for instance the regional refinement for Japan, REFINEMENT_REGIONS/cubed/japan_cs.dat, contains a list of subregions. Each of them is specified by the face of the cube to which it belongs (face=1: normal in positive x direction, face=2: normal in negative x direction, face=3: normal in positive y direction, face=4: normal in negative y direction, face=5: normal in positive z direction, face=6: normal in negative z direction). Subsequently, the size of the subcube, as well as the in-plane (horizontal) and normal-to-plane (vertical) refinements are specified using the unit-cube coordinates.
 
 This is clearly not very convenient. Improvements to this are on the TODO list.
 
@@ -65,8 +65,17 @@ The usage is virtually the same as for the cubed sphere:
 Fibonacci sphere (regionally refinable)
 ---------------------------------------
 
+Conceptually, the computation of a refinable Fibonacci sphere is very similar to the cubed sphere, described above. What differs is merely the definition of the refinement regions, examples for which are given in REFINEMENT_REGIONS/fibonacci/. Parameters describing the refinement regions are minimum and maximum latitude and longitude, the number of points per depth level, the minimum and maximum radius, the radial increment, and the rotation parameters needed to rotate the subregion on the globe. To compute a refinable Fibonacci sphere, _Grids_ needs to be invoked as follows:
+
+grid fibonacci_sphere [name of refinement list] [output file name] [radius of the sphere in km] [minimum point distance in km]
+
 Fibonacci ball (regionally refinable)
 -------------------------------------
+
+The computation of a refinable Fibonacci ball works similar to the refinable Fibonacci sphere, by invoking _Grids_ as follows:
+
+grid fibonacci_ball [name of refinement list] [output file name] [minimum point distance in km]
+
 
 Regular spherical grid (spherical subsection, regionally refinable)
 -------------------------------------------------------------------
