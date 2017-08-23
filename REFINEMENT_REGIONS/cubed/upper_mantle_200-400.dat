@@ -1,0 +1,62 @@
+#- Number of subregions followed by spatial extent. -----
+6
+#- Comment line.
+1		#- face index
+-1.0	#- ymin
+1.0		#- ymax
+-1.0	#- zmin
+1.0		#- zmax
+0.9372155	#- rmin
+0.9686078	#- rmax
+0.0500000 	#- d_horizontal
+0.0031392	#- d_vertical
+#- Comment line.
+2		#- face index
+-1.0	#- ymin
+1.0		#- ymax
+-1.0	#- zmin
+1.0		#- zmax
+0.9372155	#- rmin
+0.9686078	#- rmax
+0.0500000 	#- d_horizontal
+0.0031392	#- d_vertical
+#- Comment line.
+3		#- face index
+-1.0	#- xmin
+1.0		#- xmax
+-1.0	#- zmin
+1.0		#- zmax
+0.9372155	#- rmin
+0.9686078	#- rmax
+0.0500000 	#- d_horizontal
+0.0031392	#- d_vertical
+#- Comment line.
+4		#- face index
+-1.0	#- xmin
+1.0		#- xmax
+-1.0	#- zmin
+1.0		#- zmax
+0.9372155	#- rmin
+0.9686078	#- rmax
+0.0500000 	#- d_horizontal
+0.0031392	#- d_vertical
+#- Comment line.
+5		#- face index
+-1.0	#- xmin
+1.0		#- xmax
+-1.0	#- ymin
+1.0		#- ymax
+0.9372155	#- rmin
+0.9686078	#- rmax
+0.0500000 	#- d_horizontal
+0.0031392	#- d_vertical
+#- Comment line.
+6		#- face index
+-1.0	#- xmin
+1.0		#- xmax
+-1.0	#- ymin
+1.0		#- ymax
+0.9372155	#- rmin
+0.9686078	#- rmax
+0.0500000 	#- d_horizontal
+0.0031392	#- d_vertical
