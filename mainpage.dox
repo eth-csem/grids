@@ -13,7 +13,7 @@ _Grids_ is a tool for the computation of point clouds that can be used to extrac
 
 The usage of _Grids_ for these different types of point clouds is described below.
 
-The point clouds produced by _Grids_ do not contain any connectivity information. If needed, this must be added externally, using, for instance, vtk or other meshers.
+The point clouds produced by _Grids_ do not contain any connectivity information. If needed, this must be added externally, using, for instance, vtk or other meshers. In this context, it must be mentioned that the visual appearance of different point clouds may be very different for different visualisation softwares and meshers.
 
 
 Compiling and running _Grids_
@@ -98,7 +98,11 @@ A 1D vertical profile can be computed by invoking _Grids_ as follows:
 Vertical slice (from and to spcified latitude and longitude)
 ------------------------------------------------------------
 
-TO BE WRITTEN.
+A vertical profile between two points (specified by their latitude and longitude) can be computed as follows:
+
+./grids slice [min. latitude (deg)] [min. longitude (deg)] [min. radius (km)] [max. latitude (deg)] [max. longitude (deg)] [max. radius (km)] [radius increment (km)] [angular increment (deg)]
+
+
 
 Planned additions to _Grids_
 ============================

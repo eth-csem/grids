@@ -496,8 +496,8 @@ void PointCloud::slice(double lat_min, double lon_min, double r_min, double lat_
     double y_max=sin(phi_max)*sin(theta_max);
     double z_max=cos(theta_max);
     
-    double gamma=acos(x_min*x_max+y_min*y_max+z_min*z_max);
-    double dt=dgamma*PI/(180.0*gamma);
+    double gamma=acos(x_min*x_max+y_min*y_max+z_min*z_max); // Angle between the end points.
+    double dt=dgamma*PI/(180.0*gamma);  // Angular increment normalised to 1.
     
     printf("dt=%lg\n",dt);
     

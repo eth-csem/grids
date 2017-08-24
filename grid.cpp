@@ -133,10 +133,11 @@ void print_help()
 {
     printf("\nUsage of grid:\n");
     printf("--------------\n");
-    printf("grid cubed_sphere [name of refinement list] [output file name] [radius of the sphere in km] [minimum point distance in km]\n");
-    printf("grid cubed_ball [name of refinement list] [output file name] [minimum point distance in km]\n");
-    printf("grid fibonacci_sphere [name of refinement list] [output file name] [radius of the sphere in km] [minimum point distance in km]\n");
-    printf("grid fibonacci_ball [name of refinement list] [output file name] [minimum point distance in km]\n");
-    printf("grid regular [name of refinement list] [output file name] [minimum point distance in km]\n");
-    printf("grid profile [latitude in degree] [longitude in degree] [minimum radius in km] [maximum radius in km] [radius increment in km]\n");
+    printf("grid cubed_sphere [name of refinement list] [output file name] [radius of the sphere (km)] [min. point distance (km)]\n");
+    printf("grid cubed_ball [name of refinement list] [output file name] [min. point distance (km)]\n");
+    printf("grid fibonacci_sphere [name of refinement list] [output file name] [radius of the sphere (km)] [min. point distance (km)]\n");
+    printf("grid fibonacci_ball [name of refinement list] [output file name] [min. point distance (km)]\n");
+    printf("grid regular [name of refinement list] [output file name] [minimum point distance (km)]\n");
+    printf("grid profile [latitude (deg)] [longitude (deg)] [min. radius (km)] [max. radius (km)] [radius increment (km)]\n");
+    printf("grid slice [min. latitude (deg)] [min. longitude (deg)] [min. radius (km)] [max. latitude (deg)] [max. longitude (deg)] [max. radius (km)] [radius increment (km)] [angular increment (deg)]\n");
 }
